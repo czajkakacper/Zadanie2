@@ -49,21 +49,21 @@ jobs:
           push: true
           cache-from: type=inline,src=/tmp/.buildx-cache # cache - inline
           cache-to: type=inline,mode=max,dest=/tmp/.buildx-cache-new # cache - inline
-          tags: |
-            ghcr.io/${{ github.repository_owner }}/chmurowezad2img:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.x86_64
-            ghcr.io/${{ github.repository_owner }}/chmurowezad2img:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.arm64
           # tags: |
-          #   ghcr.io/${{ github.repository_owner }}/chmurowezad2img:x86_64
-          #   ghcr.io/${{ github.repository_owner }}/chmurowezad2img:arm64
+          #   ghcr.io/${{ github.repository_owner }}/chmurowezad2img:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.x86_64
+          #   ghcr.io/${{ github.repository_owner }}/chmurowezad2img:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.arm64
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/chmurowezad2img:x86_64
+            ghcr.io/${{ github.repository_owner }}/chmurowezad2img:arm64
           
-      - name: Increment version
-        run: |
-          MAJOR_VERSION=$(echo $MAJOR_VERSION | awk -F"." '{print $1}')
-          MINOR_VERSION=$(echo $MINOR_VERSION | awk -F"." '{print $1}')
-          MAJOR_VERSION=$((MAJOR_VERSION + 1))
-          MINOR_VERSION=$((MINOR_VERSION + 1))
-          sed -i "s/MAJOR_VERSION=.*/MAJOR_VERSION=$MAJOR_VERSION/" $GITHUB_ENV
-          sed -i "s/MINOR_VERSION=.*/MINOR_VERSION=$MINOR_VERSION/" $GITHUB_ENV
+      # - name: Increment version
+      #   run: |
+      #     MAJOR_VERSION=$(echo $MAJOR_VERSION | awk -F"." '{print $1}')
+      #     MINOR_VERSION=$(echo $MINOR_VERSION | awk -F"." '{print $1}')
+      #     MAJOR_VERSION=$((MAJOR_VERSION + 1))
+      #     MINOR_VERSION=$((MINOR_VERSION + 1))
+      #     sed -i "s/MAJOR_VERSION=.*/MAJOR_VERSION=$MAJOR_VERSION/" $GITHUB_ENV
+      #     sed -i "s/MINOR_VERSION=.*/MINOR_VERSION=$MINOR_VERSION/" $GITHUB_ENV
 
       # - name: Move cache
       #   run: |
