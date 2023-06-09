@@ -3,7 +3,7 @@
 Użyte polecenia: 
 1. Zastosowanie docker build:
     ```
-    docker build -f Dockerfile -t local/zadanie2:v1 .
+    docker build -f Dockerfile -t local/zad2:v1 .
     ```
 2. Zastosowanie docker compose:
     ```
@@ -11,7 +11,7 @@ Użyte polecenia:
     ```
 3. Uruchomienie usługi(wykorzystanie wolumenów):
     ```
-    docker run -it -p 3000:3000 --name zad2 -v /app/node_modules -v $(pwd):/app local/zadanie2:v1
+    docker run -it -p 3000:3000 --name zadanie2 -v /app/node_modules -v $(pwd):/app local/zad2:v1
     ```
     ![image](screeny/
 4. Poddanie obrazu testowi pod kątem CVE z wykorzystaniem dowolnego narzędzia przedstawionego na laboratorium:
